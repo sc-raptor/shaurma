@@ -1,0 +1,56 @@
+<ul id="menu">
+  <li data-menuanchor="main"><a href="#main">Главная</a></li>
+  <li data-menuanchor="order"><a href="#order">Отметиться</a></li>
+  <li data-menuanchor="map"><a href="#map">Карта</a></li>
+  <li data-menuanchor="members"><a href="#members">Участники</a></li>
+  <li data-menuanchor="contacts"><a href="#contacts">Связаться</a></li>
+</ul>
+
+<div class="section " id="section0">
+  <h1>Секта любителей шаурмы</h1>
+  <img src="assets/ya_shaurma.jpg">
+  <p></p>
+</div>
+<div class="section" id="section1">
+  <% @events.each do |event| %>
+    <% disable_button = Date.parse(event.date) < Date.today ? 'disabled' : '' %>
+    <div class="slide">
+      <h1>Дата: <%= event.date %></h1>
+      
+      <% if event.date == Date.today.to_s%>
+      <% end %>
+      
+      <p>Отметились:</p>
+      <p id="event_<%=event.id%>"><%= event.attendees_names.join(', ')%></p>
+      <br /><br />
+      <p>Всего: <span id="count_<%=event.id%>"><%= event.attendees_names.count %></span></p>
+      <button <%= disable_button %> class="btn btn-primary center" onclick="oneIn('<%= event.id %>');">+1</button>
+      <button <%= disable_button %> class="btn btn-primary center" onclick="oneOut('<%= event.id %>');">-1</button>
+      <br><br><br>
+      <p>Бегущий:</p>
+      <h1><%= event.runner_name %></h1>
+    </div>
+  <% end %>
+</div>
+<div class="section" id="section2">
+  <div class="intro">
+    <h1>В разработке</h1>
+  </div>
+</div>
+<div class="section" id="section3">
+  <% @users.each do |user| %>
+    <div>
+      <h3><%=user.screen_name%></h3> <p></p>
+    </div>
+  <% end %>
+</div>
+<div class="section" id="section4">
+  <div class="intro">
+    <h1>Контакты:</h1>
+    <p>
+      <a href="mailto:s.volovyk@adbglobal.com?Subject=Шаурма">Email</a>
+      <a href="xmpp:s.volovyk@adbglobal.com">Jabber</a>
+      <br /><br /><br /><br /><br /><br />
+    </p>
+  </div>
+</div>

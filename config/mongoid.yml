@@ -1,0 +1,17 @@
+logger: false
+
+defaults: &defaults
+  host: localhost
+  allow_dynamic_fields: false
+
+development:
+  <<: *defaults
+  database: shaurma_development
+
+test:
+  <<: *defaults
+  database: shaurma_test
+
+production:
+  <<: *defaults
+  database: shaurma_production
